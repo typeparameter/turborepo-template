@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    cooldown:
+      default-days: 7
+    schedule:
+      interval: weekly
+    versioning-strategy: increase-if-necessary
+    labels: [dependencies]
+    open-pull-requests-limit: 1
+    pull-request-branch-name:
+      template: "{prefix}/npm/{dependency}"
+    groups:
+      all:
+        patterns: ["*"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    cooldown:
+      default-days: 7
+    schedule:
+      interval: weekly
+    labels: [ci, dependencies]
+    open-pull-requests-limit: 1
+    pull-request-branch-name:
+      template: "{prefix}/gh-actions/{dependency}"
+    groups:
+      all:
+        patterns: ["*"]

@@ -1,0 +1,30 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build and check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: actions/cache/restore@v6
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: turbo-${{ runner.os }}-
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm check
+      - uses: actions/cache/save@v6
+        if: github.event_name == 'push'
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
