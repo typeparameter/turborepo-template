@@ -18,8 +18,8 @@ jobs:
       - uses: actions/cache/restore@v6
         with:
           path: .turbo
-          key: turbo-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: turbo-${{ runner.os }}-
+          key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: turbo-${{ runner.os }}-${{ runner.arch }}-
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm check
@@ -27,4 +27,4 @@ jobs:
         if: github.event_name == 'push'
         with:
           path: .turbo
-          key: turbo-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
