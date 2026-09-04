@@ -1,0 +1,7 @@
+# Build output
+build
+dist
+
+# Repo support
+.turbo
+node_modules
