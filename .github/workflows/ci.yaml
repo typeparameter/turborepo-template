@@ -21,8 +21,8 @@ jobs:
           key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: turbo-${{ runner.os }}-${{ runner.arch }}-
       - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - run: pnpm check
+      - run: pnpm turbo build
+      - run: pnpm turbo check
       - uses: actions/cache/save@v6
         if: github.event_name == 'push'
         with:

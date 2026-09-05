@@ -14,22 +14,26 @@ Included tooling:
 
 ## Tasks
 
+Before running these tasks, install package dependencies with `pnpm install`.
+
+The commands below use the repository-local version of Turbo. Optionally, install Turbo globally with `pnpm add --global turbo` to omit the `pnpm` prefix.
+
 ### Build the project
 
 ```shell
-pnpm build
+pnpm turbo build
 ```
 
 ### Run lint, format, and type checks
 
 ```shell
-pnpm check
+pnpm turbo check
 ```
 
 ### Start development tasks
 
 ```shell
-pnpm dev
+pnpm turbo dev
 ```
 
 [Turborepo]: https://turborepo.dev/
