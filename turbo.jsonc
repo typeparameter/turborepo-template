@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/**", "dist/**"]
+    },
+    "check": {
+      "dependsOn": ["typecheck"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {},
+
+    /* Workspace root tasks */
+    "//#check": {
+      // Need to depend on typecheck since this task overrides the 'check' default
+      "dependsOn": ["//#format:check", "//#lint", "//#typecheck"]
+    },
+    "//#format": { "cache": false },
+    "//#format:check": {},
+    "//#lint": {},
+    "//#lint:fix": { "cache": false },
+    "//#typecheck": {}
+  }
+}

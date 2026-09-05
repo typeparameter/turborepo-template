@@ -2,15 +2,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "turbo build",
-    "check": "pnpm run '/^(format:check|lint|typecheck)$/'",
-    "dev": "turbo dev",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint --no-error-on-unmatched-pattern .",
     "lint:fix": "oxlint --fix --no-error-on-unmatched-pattern .",
-    "typecheck": "pnpm typecheck:root && turbo typecheck",
-    "typecheck:root": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

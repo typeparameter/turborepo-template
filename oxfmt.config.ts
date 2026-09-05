@@ -12,4 +12,12 @@ export default defineConfig({
     newlinesBetween: true,
     groups: [["builtin", "external"], "repo", ["parent", "sibling", "index", "unknown"]],
   },
+  overrides: [
+    {
+      files: ["**/*.jsonc"],
+      options: {
+        trailingComma: "none",
+      },
+    },
+  ],
 });
