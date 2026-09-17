@@ -7,6 +7,10 @@ updates:
     schedule:
       interval: weekly
     versioning-strategy: increase-if-necessary
+    ignore:
+      # Keep the major version of Node types aligned with the Node runtime defined in package.json
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     labels: [dependencies]
     open-pull-requests-limit: 1
     pull-request-branch-name:
