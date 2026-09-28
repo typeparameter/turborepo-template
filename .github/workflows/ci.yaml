@@ -15,16 +15,11 @@ jobs:
         with:
           node-version-file: package.json
           cache: pnpm
-      - uses: actions/cache/restore@v6
+      - uses: actions/cache@v6
         with:
           path: .turbo
-          key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.sha }}
           restore-keys: turbo-${{ runner.os }}-${{ runner.arch }}-
       - run: pnpm install --frozen-lockfile
       - run: pnpm turbo build
       - run: pnpm turbo check
-      - uses: actions/cache/save@v6
-        if: github.event_name == 'push'
-        with:
-          path: .turbo
-          key: turbo-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ github.run_attempt }}
