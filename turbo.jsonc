@@ -12,7 +12,9 @@
       "cache": false,
       "persistent": true
     },
-    "typecheck": {},
+    "typecheck": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/tsconfig.base.json"]
+    },
 
     /* Workspace root tasks */
     "//#check": {
@@ -23,6 +25,8 @@
     "//#format:check": {},
     "//#lint": {},
     "//#lint:fix": { "cache": false },
-    "//#typecheck": {}
+    "//#typecheck": {
+      "inputs": ["*.config.ts", "tsconfig*.json"]
+    }
   }
 }
