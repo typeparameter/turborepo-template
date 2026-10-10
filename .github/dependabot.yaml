@@ -15,8 +15,10 @@ updates:
     open-pull-requests-limit: 1
     pull-request-branch-name:
       template: "{prefix}/npm"
+    commit-message:
+      prefix: "chore(deps)"
     groups:
-      all:
+      npm:
         patterns: ["*"]
 
   - package-ecosystem: github-actions
@@ -29,6 +31,8 @@ updates:
     open-pull-requests-limit: 1
     pull-request-branch-name:
       template: "{prefix}/gh-actions"
+    commit-message:
+      prefix: "chore(ci)"
     groups:
-      all:
+      actions:
         patterns: ["*"]
